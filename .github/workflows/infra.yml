@@ -6,6 +6,12 @@ on:
     paths:
       - '.github/workflows/infra.yml' # on infra workflow change
       - 'infra/**' # on code change
+  pull_request:
+    branches:
+      - 'master'
+    paths:
+      - '.github/workflows/infra.yml' # on infra workflow change
+      - 'infra/**' # on code change
 jobs:
   job:
     runs-on: ubuntu-latest
