@@ -42,5 +42,5 @@ jobs:
           # Currently, working-directory cannot be used with Custom Actions
           # @see https://github.community/t/unable-to-use-working-directory-with-docker-based-actions/16419/4
           run: |
-            cd infra
+            cd $GITHUB_WORKSPACE/infra
             npm run cdk deploy --ci --require-approval never
