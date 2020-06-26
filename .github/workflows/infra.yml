@@ -2,7 +2,7 @@ name: infra
 on:
   push:
     branches:
-      - '*'
+      - 'master'
     paths:
       - '.github/workflows/infra.yml' # on workflow configuration change
       - 'infra/**' # on code change
@@ -38,6 +38,5 @@ jobs:
           API_PATH: ${{ secrets.API_DOMAIN_NAME }}
         with:
           group: refined-unipass
-          stream: ${{ gihub.sha }}-infra
+          stream: ${{ github.sha }}-infra
           run: npm run cdk deploy --ci --require-approval never
-
