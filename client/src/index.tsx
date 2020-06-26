@@ -4,10 +4,11 @@ import * as ReactDOM from 'react-dom';
 import './index.sass';
 
 import { Callout } from './components/callout';
+import { TrackingDetail } from './components/tracking-detail';
 // eslint-disable-next-line no-unused-vars
 import { TrackingForm, TrackingInput } from './components/tracking-form';
+import { TrackingList } from './components/tracking-list';
 import { useQuery } from './components/use-query';
-import { TrackingDetail } from './components/tracking-detail';
 
 function App() {
   const [input, setInput] = React.useState<TrackingInput | null>(null);
@@ -46,6 +47,9 @@ function App() {
         </Callout>
       ) }
 
+      { data?.data?.type === 'MULTIPLE' && (
+        <TrackingList data={data.data} />
+      ) }
 
       { data?.data?.type === 'DETAILED' && (
         <TrackingDetail data={data.data} />
