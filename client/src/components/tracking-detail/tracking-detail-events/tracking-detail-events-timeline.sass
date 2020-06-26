@@ -1,0 +1,41 @@
+.tracking-detail-events-timeline
+  .timeline-item
+    margin-bottom: 3rem
+    &:last-child
+      margin-bottom: 0
+
+    .timeline-title
+      color: #4a4a4a
+      font-size: 1.5rem
+      line-height: 2.25rem
+      margin-bottom: 1.25rem
+
+    .timeline-events
+      display: block
+      width: 100%
+      margin: 0
+      padding: 0
+      .timeline-event
+        display: table
+        list-style: none
+        margin-bottom: 1rem
+        &:last-child
+          margin-bottom: 0
+        .timeline-event-time,
+        .timeline-event-summary
+          display: table-cell
+          line-height: 1.5rem
+          padding: 0 0.5rem
+        .timeline-event-time
+          width: 5rem
+          border-right: 2px solid #f0f0f0
+          color: #999
+          text-align: right
+
+        .timeline-event-summary
+          .timeline-event-status,
+          .timeline-event-location
+            display: block
+          .timeline-event-location
+            color: #999
+

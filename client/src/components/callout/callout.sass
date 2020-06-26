@@ -1,0 +1,26 @@
+.callout
+  position: relative
+  background: none
+  padding: 1rem 1.25rem
+  text-align: left
+
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    width: 2px
+    height: 100%
+    background: none
+
+  &.is-danger
+    background-color: #fbe9e7
+    color: #d50000
+    &:before
+      background-color: #d50000
+
+  &.is-warning
+    background-color: #fffbeb
+    color: #947600
+    &:before
+      background-color: #947600

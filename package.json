@@ -1,0 +1,40 @@
+{
+  "name": "refined-unipass-api",
+  "version": "1.0.0",
+  "description": "An example project of node-unipass package",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "prepack": "rm -f dist.zip",
+    "pack": "cp package.json package-lock.json dist/ && cd dist && npm ci --production && npm ls && zip -rqy ../dist.zip . && cd ..",
+    "pretest": "npm run build -- -p ./tsconfig.test.json",
+    "lint": "tslint -c tslint.json '{src,infra}/**/*.ts'",
+    "deploy": "npm run build && npm run pack && serverless deploy --aws-s3-accelerate --verbose",
+    "deploy:stage": "npm run deploy -- -s stage",
+    "deploy:prod": "npm run deploy -- -s prod",
+    "info:stage": "sls info -s stage",
+    "info:prod": "sls info -s prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mooyoul/refined-unipass.git"
+  },
+  "author": "MooYeol Prescott Lee <mooyoul@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mooyoul/refined-unipass/issues"
+  },
+  "homepage": "https://github.com/mooyoul/refined-unipass#readme",
+  "devDependencies": {
+    "@prescott/tslint-preset": "1.0.0",
+    "serverless": "1.73.1",
+    "serverless-prune-plugin": "1.4.3",
+    "tslint": "6.1.2",
+    "typescript": "3.9.5"
+  },
+  "dependencies": {
+    "unipass": "^1.0.0",
+    "vingle-corgi": "^3.2.0"
+  }
+}

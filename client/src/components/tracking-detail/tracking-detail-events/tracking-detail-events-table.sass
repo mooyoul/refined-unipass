@@ -1,0 +1,20 @@
+.tracking-detail-events-table
+  table
+    min-width: 100%
+    th, td
+      white-space: nowrap
+
+    tbody
+      // defaults
+      tr
+        background-color: #fff
+      tr:last-child td,
+      tr:last-child th
+        border-bottom-width: 1px
+      // stripe styles for even rows
+      &:nth-child(even) tr
+        background-color: #fafafa
+
+      // hover effects
+      &:hover tr
+        background-color: #f0f0f0

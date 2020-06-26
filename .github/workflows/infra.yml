@@ -1,0 +1,42 @@
+name: infra
+on:
+  push:
+    branches:
+      - '*'
+    paths:
+      - '.github/workflows/infra.yml' # on workflow configuration change
+      - 'infra/**' # on code change
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Prepare
+        working-directory: infra
+        run: npm ci
+      - name: Lint
+        working-directory: infra
+        run: npm run lint
+      - name: Deploy
+        working-directory: infra
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: mooyoul/cloudwatch-logs-actions@v1.0.1
+        env:
+          AWS_DEFAULT_REGION: us-east-1
+          AWS_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CDK_DEFAULT_ACCOUNT: ${{ secrets.AWS_ACCOUNT_ID }}
+          CDK_DEFAULT_REGION: "us-east-1"
+          CDN_DOMAIN_NAME: "refined-unipass.debug.so"
+          CDN_ZONE_NAME: "debug.so"
+          API_DOMAIN_NAME: ${{ secrets.API_DOMAIN_NAME }}
+          API_PATH: ${{ secrets.API_DOMAIN_NAME }}
+        with:
+          group: refined-unipass
+          stream: ${{ gihub.sha }}-infra
+          run: npm run cdk deploy --ci --require-approval never

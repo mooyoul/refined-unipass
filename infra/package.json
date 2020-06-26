@@ -1,0 +1,45 @@
+{
+  "name": "refined-unipass-infra",
+  "version": "1.0.0",
+  "description": "Additional IaC code for refined-unipass",
+  "dependencies": {
+    "@aws-cdk/aws-cloudfront": "^1.47.0",
+    "@aws-cdk/core": "^1.47.0"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.47.0",
+    "@aws-cdk/aws-certificatemanager": "1.47.0",
+    "@aws-cdk/aws-iam": "1.47.0",
+    "@aws-cdk/aws-route53": "1.47.0",
+    "@aws-cdk/aws-route53-targets": "1.47.0",
+    "@prescott/tslint-preset": "1.0.0",
+    "@types/jest": "26.0.3",
+    "@types/node": "12.12.32",
+    "aws-cdk": "1.47.0",
+    "jest": "26.1.0",
+    "ts-jest": "26.1.1",
+    "ts-node": "^8.10.2",
+    "tslint": "6.1.2",
+    "typescript": "3.9.5"
+  },
+  "bin": {
+    "app": "bin/app.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json '{bin,lib,test}/**/*.ts'",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mooyoul/refined-unipass.git"
+  },
+  "author": "MooYeol Prescott Lee <mooyoul@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mooyoul/refined-unipass/issues"
+  },
+  "homepage": "https://github.com/mooyoul/refined-unipass#readme"
+}

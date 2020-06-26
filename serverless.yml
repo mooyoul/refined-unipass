@@ -1,0 +1,32 @@
+service: unipass
+
+plugins:
+  - "serverless-prune-plugin"
+
+custom:
+  prune:
+    automatic: true
+    number: 5
+
+provider:
+  name: aws
+  region: ap-northeast-2
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'stage'}
+  logRetentionInDays: 30
+
+package:
+  artifact: dist.zip
+
+functions:
+  api:
+    name: ${self:service}-${self:provider.stage}-api
+    handler: index.handler
+    memorySize: 256
+    timeout: 30
+    environment:
+      CARGO_CLEARANCE_PROGRESS_API_KEY: ${env:CARGO_CLEARANCE_PROGRESS_API_KEY}
+    events:
+      - http:
+          path: /{proxy+}
+          method: any

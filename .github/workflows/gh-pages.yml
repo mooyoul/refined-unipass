@@ -1,0 +1,28 @@
+name: gh-pages
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - '.github/workflows/gh-pages.yml' # on workflow configuration change
+      - 'client/**' # on code change
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Prepare
+        working-directory: client
+        run: npm ci
+      - name: Build
+        working-directory: client
+        run: npm run build:prod
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: client/dist

@@ -1,0 +1,36 @@
+name: workflow
+on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - 'client/**'
+      - 'infra/**'
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Prepare
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      - name: Deploy API
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: mooyoul/cloudwatch-logs-actions@v1.0.1
+        env:
+          AWS_DEFAULT_REGION: us-east-1
+          AWS_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CARGO_CLEARANCE_PROGRESS_API_KEY: ${{ secrets.CARGO_CLEARANCE_PROGRESS_API_KEY }}
+        with:
+          group: refined-unipass
+          stream: ${{ gihub.sha }}-api
+          run: npm run deploy:prod
