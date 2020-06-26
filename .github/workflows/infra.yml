@@ -24,7 +24,7 @@ jobs:
       - name: Deploy
         working-directory: infra
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: mooyoul/cloudwatch-logs-actions@v1.0.1
+        uses: mooyoul/cloudwatch-logs-actions@v1.1.0
         env:
           AWS_DEFAULT_REGION: us-east-1
           AWS_REGION: us-east-1
@@ -39,4 +39,5 @@ jobs:
         with:
           group: refined-unipass
           stream: ${{ github.sha }}-infra
+          retention: 30d
           run: npm run cdk deploy --ci --require-approval never
