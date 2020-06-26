@@ -22,7 +22,6 @@ jobs:
         working-directory: infra
         run: npm run lint
       - name: Deploy
-        working-directory: infra
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: mooyoul/cloudwatch-logs-actions@v1.1.0
         env:
@@ -40,4 +39,8 @@ jobs:
           group: refined-unipass
           stream: ${{ github.sha }}-infra
           retention: 30d
-          run: npm run cdk deploy --ci --require-approval never
+          # Currently, working-directory cannot be used with Custom Actions
+          # @see https://github.community/t/unable-to-use-working-directory-with-docker-based-actions/16419/4
+          run: |
+            cd infra
+            npm run cdk deploy --ci --require-approval never
