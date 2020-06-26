@@ -49,7 +49,7 @@ env \
   CDN_ZONE_NAME=example.com \
   API_DOMAIN_NAME=xxxx.execute-api.region.amazonaws.com \
   API_PATH=/stage \
-  npm run cdk deploy --ci --require-approval never
+  npm run cdk -- deploy
 ```
 
 #### Testing
