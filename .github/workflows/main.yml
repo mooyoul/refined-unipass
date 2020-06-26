@@ -32,5 +32,5 @@ jobs:
           CARGO_CLEARANCE_PROGRESS_API_KEY: ${{ secrets.CARGO_CLEARANCE_PROGRESS_API_KEY }}
         with:
           group: refined-unipass
-          stream: ${{ gihub.sha }}-api
+          stream: ${{ github.sha }}-api
           run: npm run deploy:prod
