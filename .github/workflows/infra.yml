@@ -4,7 +4,7 @@ on:
     branches:
       - 'master'
     paths:
-      - '.github/workflows/infra.yml' # on workflow configuration change
+      - '.github/workflows/infra.yml' # on infra workflow change
       - 'infra/**' # on code change
 jobs:
   job:
