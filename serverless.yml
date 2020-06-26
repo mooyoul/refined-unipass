@@ -22,7 +22,7 @@ functions:
   api:
     name: ${self:service}-${self:provider.stage}-api
     handler: index.handler
-    memorySize: 256
+    memorySize: 384
     timeout: 30
     environment:
       CORS_ALLOWED_ORIGINS: ${env:CORS_ALLOWED_ORIGINS, ''}
