@@ -17,10 +17,10 @@ function App() {
   };
 
   return (
-    <div className="app container">
+    <>
       <section className="hero is-primary">
         <div className="hero-body">
-          <div className="container">
+          <div className="container is-narrow">
             <h1 className="title is-spaced">
               <span className="is-block is-size-1 mb-3" role="img" aria-label="Box Icon">📦</span>
               관세청 수입통관 조회
@@ -34,32 +34,31 @@ function App() {
 
       <TrackingForm disabled={isLoading} onSubmit={onSubmit} />
 
-      <div className="px-4 py-4">
-        { error && (
-          <Callout modifier="is-danger">
-            { error.message }
-          </Callout>
-        )}
+      { error && (
+        <Callout modifier="is-danger">
+          { error.message }
+        </Callout>
+      ) }
 
-        { !error && (data && !data.data) && (
-          <Callout modifier="is-warning">
-            조회 결과가 없습니다.
-          </Callout>
-        ) }
+      { !error && (data && !data.data) && (
+        <Callout modifier="is-warning">
+          조회 결과가 없습니다.
+        </Callout>
+      ) }
 
-        { data?.data?.type === 'DETAILED' && (
-          <TrackingDetail data={data.data} />
-        ) }
 
-        { /* }
-        <div>
-          <h3>Error</h3>
-          <p>{ JSON.stringify(error) }</p>
-          <h3>Data</h3>
-          <p>{ JSON.stringify(data) }</p>
-        </div>
-        { */ }
+      { data?.data?.type === 'DETAILED' && (
+        <TrackingDetail data={data.data} />
+      ) }
+
+      { /* }
+      <div>
+        <h3>Error</h3>
+        <p>{ JSON.stringify(error) }</p>
+        <h3>Data</h3>
+        <p>{ JSON.stringify(data) }</p>
       </div>
+      { */ }
 
       <footer className="footer">
         <div className="content has-text-centered">
@@ -72,7 +71,7 @@ function App() {
           </p>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
 

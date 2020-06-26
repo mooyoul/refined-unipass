@@ -8,8 +8,10 @@ export function Callout(props: CalloutProps) {
   const { children, modifier } = props;
 
   return (
-    <p className={`callout ${modifier}`}>
-      { children }
-    </p>
+    <div className="container is-narrow is-padded">
+      <p className={`callout ${modifier}`}>
+        { children }
+      </p>
+    </div>
   );
 }

@@ -9,10 +9,11 @@ html, body
   font-size: 14px
   line-height: 20px
 
-.github-fork-ribbon:before
-    background-color: #333
-    position: fixed
-
+.container
+  &.is-narrow
+    max-width: 720px !important
+  &.is-padded
+    padding: 1rem
 
 .title, .subtitle, .content, p
   word-break: keep-all

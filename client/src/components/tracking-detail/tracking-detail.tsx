@@ -39,31 +39,33 @@ export function TrackingDetail(props: TrackingDetailProps) {
 
   return (
     <section className="tracking-detail">
-      <div className="buttons is-right">
-        <button type="button" className={detailedOverviewButtonClassNames.enable} onClick={onDisableDetailedOverviewClicked}>
-          {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-          <span className="icon">🔖</span>
-          <span>간략히</span>
-        </button>
-        <button type="button" className={detailedOverviewButtonClassNames.disable} onClick={onEnableDetailedOverviewClicked}>
-          {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-          <span className="icon">📚</span>
-          <span>자세히</span>
-        </button>
+      <div className="container is-narrow is-padded">
+        <div className="buttons is-right">
+          <button type="button" className={detailedOverviewButtonClassNames.enable} onClick={onDisableDetailedOverviewClicked}>
+            {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
+            <span className="icon">🔖</span>
+            <span>간략히</span>
+          </button>
+          <button type="button" className={detailedOverviewButtonClassNames.disable} onClick={onEnableDetailedOverviewClicked}>
+            {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
+            <span className="icon">📚</span>
+            <span>자세히</span>
+          </button>
+        </div>
       </div>
 
       { !detailedViewEnabled && (
-        <>
+        <div className="container is-narrow is-padded">
           <TrackingDetailOverviewCard data={data} />
           <TrackingDetailEventsTimeline data={data} />
-        </>
+        </div>
       ) }
 
       { detailedViewEnabled && (
-        <>
+        <div className="container">
           <TrackingDetailOverviewTable data={data} />
           <TrackingDetailEventsTable data={data} />
-        </>
+        </div>
       ) }
     </section>
   );

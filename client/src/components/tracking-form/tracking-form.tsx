@@ -68,26 +68,28 @@ export function TrackingForm(props: TrackingFormProps) {
   });
 
   return (
-    <TabPanel>
-      <div className="tracking-form">
-        <div className="tabs is-fullwidth">
-          <ul>
-            <TrackingFormTab>
-              <span>⚡️ 간편조회</span>
-            </TrackingFormTab>
-            <TrackingFormTab>
-              <span>화물관리번호</span>
-            </TrackingFormTab>
-            <TrackingFormTab>
-              <span>B/L</span>
-            </TrackingFormTab>
-          </ul>
-        </div>
+    <div className="container is-narrow">
+      <TabPanel>
+        <div className="tracking-form">
+          <div className="tabs is-fullwidth">
+            <ul>
+              <TrackingFormTab>
+                <span>⚡️ 간편조회</span>
+              </TrackingFormTab>
+              <TrackingFormTab>
+                <span>화물관리번호</span>
+              </TrackingFormTab>
+              <TrackingFormTab>
+                <span>B/L</span>
+              </TrackingFormTab>
+            </ul>
+          </div>
 
-        <TrackingFormPanelAutomatic disabled={disabled} onSubmit={onAutomaticSubmit} />
-        <TrackingFormPanelReference disabled={disabled} onSubmit={onReferenceSubmit} />
-        <TrackingFormPanelBillOfLanding disabled={disabled} onSubmit={onBillOfLandingSubmit} />
-      </div>
-    </TabPanel>
+          <TrackingFormPanelAutomatic disabled={disabled} onSubmit={onAutomaticSubmit} />
+          <TrackingFormPanelReference disabled={disabled} onSubmit={onReferenceSubmit} />
+          <TrackingFormPanelBillOfLanding disabled={disabled} onSubmit={onBillOfLandingSubmit} />
+        </div>
+      </TabPanel>
+    </div>
   );
 }
