@@ -30,6 +30,8 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           CARGO_CLEARANCE_PROGRESS_API_KEY: ${{ secrets.CARGO_CLEARANCE_PROGRESS_API_KEY }}
+          CORS_ALLOWED_ORIGINS: 'https://mooyoul.github.io http://www.lvh.me:8080'
+          CORS_MAX_AGE: '300'
         with:
           group: refined-unipass
           stream: ${{ github.sha }}-api

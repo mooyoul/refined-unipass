@@ -34,22 +34,26 @@ $ npm ci
 #### Deploying your own API service
 
 ```bash
-$ env CARGO_CLEARANCE_PROGRESS_API_KEY=YOUR_API_KEY npm run deploy:prod
+$ env \
+    CARGO_CLEARANCE_PROGRESS_API_KEY=YOUR_API_KEY \
+    CORS_ALLOWED_ORIGINS='https://mooyoul.github.io http://www.lvh.me:8080' \
+    CORS_MAX_AGE='3600' \
+    npm run deploy:prod
 ```
 
 #### (Optional) Deploying CDN
 
 ```bash
-cd infra
-npm ci
-env \
-  CDK_DEFAULT_REGION=us-east-1 \
-  CDK_DEFAULT_ACCOUNT=YOUR_AWS_ACCOUNT_ID \
-  CDN_DOMAIN_NAME=refined-unipass.example.com \
-  CDN_ZONE_NAME=example.com \
-  API_DOMAIN_NAME=xxxx.execute-api.region.amazonaws.com \
-  API_PATH=/stage \
-  npm run cdk -- deploy
+$ cd infra
+$ npm ci
+$ env \
+    CDK_DEFAULT_REGION=us-east-1 \
+    CDK_DEFAULT_ACCOUNT=YOUR_AWS_ACCOUNT_ID \
+    CDN_DOMAIN_NAME=refined-unipass.example.com \
+    CDN_ZONE_NAME=example.com \
+    API_DOMAIN_NAME=xxxx.execute-api.region.amazonaws.com \
+    API_PATH=/stage \
+    npm run cdk -- deploy
 ```
 
 #### Testing
@@ -70,7 +74,7 @@ $ npm ci
 
 ```bash
 $ cd client
-$ npm start # or use "npm run dev"
+$ npm run dev
 ```
 
 then, Navigate to http://www.lvh.me:8080.

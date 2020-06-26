@@ -5,10 +5,26 @@ import { CargoClearanceProgress } from "unipass";
 
 const cargoClearanceProgress = new CargoClearanceProgress(process.env.CARGO_CLEARANCE_PROGRESS_API_KEY!);
 
+const CORS_ALLOWED_ORIGINS = new Set<string>(
+  (process.env.CORS_ALLOWED_ORIGINS || "*").split(/\s+/g),
+);
+
+const CORS_MAX_AGE = parseInt(process.env.CORS_MAX_AGE!, 10) || 300;
+
 const MAX_BODY_SIZE = Math.floor(1024 * 1024 * 5.5); // 5.5MByte
 
 const router = new Router([
-  new Namespace("", {
+  new Namespace("/api", {
+    async before() {
+      const { origin } = this.headers;
+
+      if (origin && !CORS_ALLOWED_ORIGINS.has(origin)) {
+        throw new StandardError(403, {
+          code: "FORBIDDEN",
+          message: "Forbidden",
+        });
+      }
+    },
     async exceptionHandler(error) {
       const headers = {
         "Access-Control-Allow-Origin": "*",
@@ -95,10 +111,20 @@ const router = new Router([
           });
         }
 
-        return this.json({ data }, 200, {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Max-Age": "60",
-        });
+        const headers = (() => {
+          const { origin } = this.headers;
+
+          if (origin) {
+            return {
+              "Access-Control-Allow-Origin": origin,
+              "Access-Control-Max-Age": CORS_MAX_AGE.toString(),
+            };
+          }
+
+          return {};
+        })() as { [key: string]: string };
+
+        return this.json({ data }, 200, headers);
       }),
     ],
   }),

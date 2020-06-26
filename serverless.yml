@@ -25,6 +25,8 @@ functions:
     memorySize: 256
     timeout: 30
     environment:
+      CORS_ALLOWED_ORIGINS: ${env:CORS_ALLOWED_ORIGINS, ''}
+      CORS_MAX_AGE: ${env:CORS_ALLOWED_ORIGINS, ''}
       CARGO_CLEARANCE_PROGRESS_API_KEY: ${env:CARGO_CLEARANCE_PROGRESS_API_KEY}
     events:
       - http:
