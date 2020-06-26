@@ -4,8 +4,19 @@ on:
     branches:
       - '*'
     paths-ignore:
+      - '.github/workflows/gh-pages.yml'
+      - '.github/workflows/infra.yml'
       - 'client/**'
       - 'infra/**'
+  pull_request:
+    branches:
+      - '*'
+    paths-ignore:
+      - '.github/workflows/gh-pages.yml'
+      - '.github/workflows/infra.yml'
+      - 'client/**'
+      - 'infra/**'
+
 jobs:
   job:
     runs-on: ubuntu-latest
