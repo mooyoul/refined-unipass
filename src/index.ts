@@ -16,9 +16,15 @@ const MAX_BODY_SIZE = Math.floor(1024 * 1024 * 5.5); // 5.5MByte
 const router = new Router([
   new Namespace("/api", {
     async before() {
-      const { origin } = this.headers;
+      const isAllowedOrigin = (() => {
+        const { origin } = this.headers;
 
-      if (origin && !CORS_ALLOWED_ORIGINS.has(origin)) {
+        return origin
+          ? CORS_ALLOWED_ORIGINS.has(origin) || CORS_ALLOWED_ORIGINS.has("*")
+          : true;
+      })();
+
+      if (!isAllowedOrigin) {
         throw new StandardError(403, {
           code: "FORBIDDEN",
           message: "Forbidden",
