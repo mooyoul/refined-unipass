@@ -6,6 +6,12 @@ on:
     paths:
       - '.github/workflows/gh-pages.yml' # on workflow configuration change
       - 'client/**' # on code change
+  pull_request:
+    branches:
+      - 'master'
+    paths:
+      - '.github/workflows/gh-pages.yml' # on workflow configuration change
+      - 'client/**' # on code change
 jobs:
   job:
     runs-on: ubuntu-latest
@@ -22,6 +28,7 @@ jobs:
         working-directory: client
         run: npm run build:prod
       - name: Publish
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
