@@ -34,7 +34,7 @@ jobs:
           CDN_DOMAIN_NAME: "refined-unipass.debug.so"
           CDN_ZONE_NAME: "debug.so"
           API_DOMAIN_NAME: ${{ secrets.API_DOMAIN_NAME }}
-          API_PATH: ${{ secrets.API_DOMAIN_NAME }}
+          API_PATH: ${{ secrets.API_PATH }}
         with:
           group: refined-unipass
           stream: ${{ github.sha }}-infra
