@@ -30,7 +30,7 @@ async function query(params: QueryParameter) {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'https://hvkz9hfwib.execute-api.ap-northeast-2.amazonaws.com/stage/cargo-clearance-progress',
+      url: `${process.env.API_BASE_URL}/cargo-clearance-progress`,
       params,
     });
 
