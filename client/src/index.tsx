@@ -70,7 +70,7 @@ function App() {
             {/* eslint-disable */}
             Made with <span role="img" aria-label="Love">❤️</span> by <a href="https://github.com/mooyoul">MooYeol Lee</a>
             <br />
-            The source code is <a href="http://opensource.org/licenses/mit-license.php">MIT</a> licensed.
+            <a href="https://github.com/mooyoul/refined-unipass" target="_blank">The source code</a> is <a href="http://opensource.org/licenses/mit-license.php">MIT</a> licensed.
             {/* eslint-enable */}
           </p>
         </div>
