@@ -28,7 +28,7 @@
   "homepage": "https://github.com/mooyoul/refined-unipass#readme",
   "devDependencies": {
     "@prescott/tslint-preset": "1.0.0",
-    "serverless": "1.74.1",
+    "serverless": "1.75.1",
     "serverless-prune-plugin": "1.4.3",
     "tslint": "6.1.2",
     "typescript": "3.9.6"
