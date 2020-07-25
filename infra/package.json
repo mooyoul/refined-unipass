@@ -13,7 +13,7 @@
     "@aws-cdk/aws-route53": "1.54.0",
     "@aws-cdk/aws-route53-targets": "1.54.0",
     "@prescott/tslint-preset": "1.0.0",
-    "@types/jest": "26.0.5",
+    "@types/jest": "26.0.7",
     "@types/node": "12.12.51",
     "aws-cdk": "1.54.0",
     "jest": "26.1.0",
