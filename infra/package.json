@@ -12,7 +12,7 @@
     "@aws-cdk/aws-iam": "1.61.1",
     "@aws-cdk/aws-route53": "1.61.1",
     "@aws-cdk/aws-route53-targets": "1.61.1",
-    "@prescott/tslint-preset": "1.0.0",
+    "@prescott/tslint-preset": "1.0.1",
     "@types/jest": "26.0.10",
     "@types/node": "12.12.54",
     "aws-cdk": "1.61.1",
