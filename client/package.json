@@ -62,7 +62,7 @@
     "axios": "0.20.0",
     "bulma": "0.9.0",
     "core-js": "3.6.5",
-    "dayjs": "1.8.34",
+    "dayjs": "1.8.35",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "use-constant": "1.0.0"
