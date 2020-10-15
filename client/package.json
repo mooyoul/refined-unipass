@@ -63,8 +63,8 @@
     "bulma": "0.9.1",
     "core-js": "3.6.5",
     "dayjs": "1.9.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "use-constant": "1.0.0"
   }
 }
