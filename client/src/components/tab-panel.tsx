@@ -40,7 +40,10 @@ export const TabPanel = (props: TabPanelProps) => {
   );
 };
 
-export const useTabState = () => {
+export const useTabState = (): {
+  isActive: boolean;
+  activate: () => void;
+} => {
   const {
     activeIndex,
     acquireTabIndex,
@@ -49,14 +52,12 @@ export const useTabState = () => {
 
   const tabIndex = useConstant(() => acquireTabIndex());
 
-  const onClick = () => setActiveIndex(tabIndex);
-
   return React.useMemo(
     () => ({
       isActive: activeIndex === tabIndex,
-      onClick,
+      activate: () => setActiveIndex(tabIndex),
     }),
-    [activeIndex, onClick, tabIndex],
+    [activeIndex, setActiveIndex, tabIndex],
   );
 };
 

@@ -31,20 +31,28 @@ export type TrackingInput = AutomaticTrackingInput
   | ReferenceTrackingInput
   | BLTrackingInput;
 
-export type TabProps = React.PropsWithChildren<{}>;
-export function TrackingFormTab(props: TabProps) {
-  const { children } = props;
-  const { isActive, onClick } = useTabState();
+export type TrackingFormTabProps = React.PropsWithChildren<{
+  onClick?: () => void;
+}>;
+
+export const TrackingFormTab: React.FunctionComponent<TrackingFormTabProps> = (props) => {
+  const { children, onClick } = props;
+  const { isActive, activate } = useTabState();
+
+  const onClickCallback = React.useCallback(() => {
+    activate();
+    onClick?.();
+  }, [activate, onClick]);
 
   return (
     <li className={isActive ? 'is-active' : ''}>
       {/* eslint-disable-next-line */}
-      <a onClick={onClick}>
+      <a onClick={onClickCallback}>
         {children}
       </a>
     </li>
   );
-}
+};
 
 export type TrackingFormProps = {
   disabled?: boolean;
@@ -73,13 +81,13 @@ export function TrackingForm(props: TrackingFormProps) {
         <div className="tracking-form">
           <div className="tabs is-fullwidth">
             <ul>
-              <TrackingFormTab>
+              <TrackingFormTab onClick={() => gtag("event", "tab", { event_category: "automatic" })}>
                 <span>⚡️ 간편조회</span>
               </TrackingFormTab>
-              <TrackingFormTab>
+              <TrackingFormTab onClick={() => gtag("event", "tab", { event_category: "reference" })}>
                 <span>화물관리번호</span>
               </TrackingFormTab>
-              <TrackingFormTab>
+              <TrackingFormTab onClick={() => gtag("event", "tab", { event_category: "bill-of-landing" })}>
                 <span>B/L</span>
               </TrackingFormTab>
             </ul>
