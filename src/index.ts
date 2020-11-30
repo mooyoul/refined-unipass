@@ -1,5 +1,5 @@
-import * as Joi from "joi";
-import { Namespace, Parameter, Route, Router, StandardError } from "vingle-corgi";
+import { Namespace, Parameter, Route, Router, StandardError, ValidationError } from "@serverless-seoul/corgi";
+import { Type } from "@serverless-seoul/typebox";
 
 import { CargoClearanceProgress } from "unipass";
 
@@ -14,7 +14,7 @@ const CORS_MAX_AGE = parseInt(process.env.CORS_MAX_AGE!, 10) || 300;
 const MAX_BODY_SIZE = Math.floor(1024 * 1024 * 5.5); // 5.5MByte
 
 const router = new Router([
-  new Namespace("/api", {
+  new Namespace("/api", {}, {
     async before() {
       const isAllowedOrigin = (() => {
         const { origin } = this.headers;
@@ -37,13 +37,11 @@ const router = new Router([
         "Access-Control-Max-Age": "60",
       };
 
-      if (error.name === "ValidationError") {
-        const validationError = error as Joi.ValidationError;
-
+      if (error instanceof ValidationError) {
         return this.json({
           error: {
             code: "INVALID_PARAMETER",
-            message: validationError.message,
+            message: error.message,
           },
         }, 422, headers);
       }
@@ -69,15 +67,17 @@ const router = new Router([
         desc: "Query Clearance Progress of given cargo",
         operationId: "queryCargoClearanceProgress",
       }, {
-        ref: Parameter.Query(Joi.string().optional()),
-        master_bl: Parameter.Query(Joi.string().optional()),
-        house_bl: Parameter.Query(Joi.string().optional()),
-        year: Parameter.Query(Joi.number().integer().positive().optional()),
+        ref: Parameter.Query(Type.Optional(Type.String())),
+        master_bl: Parameter.Query(Type.Optional(Type.String())),
+        house_bl: Parameter.Query(Type.Optional(Type.String())),
+        year: Parameter.Query(Type.Optional(Type.Integer({ minimum: 1900 }))),
       },async function() {
-        const ref = this.params.ref as string | undefined;
-        const masterBL = this.params.master_bl as string | undefined;
-        const houseBL = this.params.house_bl as string | undefined;
-        const year = this.params.year as number | undefined;
+        const {
+          ref,
+          master_bl: masterBL,
+          house_bl: houseBL,
+          year,
+        } = this.params;
 
         const data = await (async () => {
           try {
