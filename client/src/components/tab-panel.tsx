@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import useConstant from 'use-constant';
 
 export type TabPanelContext = {
@@ -7,18 +6,17 @@ export type TabPanelContext = {
   acquirePanelIndex(): number;
   activeIndex: number;
   setActiveIndex(index: number): void;
-}
+};
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 const TabPanelContext = React.createContext<TabPanelContext>({
   acquireTabIndex: () => 0,
   acquirePanelIndex: () => 0,
   activeIndex: 0,
-  setActiveIndex() { },
+  setActiveIndex() { /* no op */ },
 });
 
-export type TabPanelProps = React.PropsWithChildren<{}>;
-
-export const TabPanel = (props: TabPanelProps) => {
+export const TabPanel: React.FunctionComponent<React.PropsWithChildren<Record<string, unknown>>> = (props) => {
   const { children } = props;
 
   const [activeIndex, setActiveIndex] = React.useState(0);
@@ -61,7 +59,9 @@ export const useTabState = (): {
   );
 };
 
-export const usePanelState = () => {
+export const usePanelState = (): {
+  isActive: boolean;
+} => {
   const { activeIndex, acquirePanelIndex } = React.useContext(TabPanelContext);
   const panelIndex = useConstant(() => acquirePanelIndex());
 

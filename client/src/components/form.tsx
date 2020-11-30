@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 type OnChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
-type OnChangeCallback = (event: OnChangeEvent) => void;
+type OnChangeCallback = (event: OnChangeEvent) => void; // tslint:disable-line
 
-export function useTextInput(initial: string = ''): [string, OnChangeCallback] {
+export function useTextInput(initial = ''): [string, OnChangeCallback] {
   const [value, setValue] = React.useState(initial);
 
   const onChange: OnChangeCallback = (event: OnChangeEvent) => {

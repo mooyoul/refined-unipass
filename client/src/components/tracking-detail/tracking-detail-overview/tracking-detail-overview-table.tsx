@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// eslint-disable-next-line no-unused-vars,import/no-extraneous-dependencies
 import { CargoClearanceProgressTypes } from 'unipass';
 import { format as formatDate } from '../../../util/date';
 
@@ -8,8 +7,7 @@ export type TrackingDetailOverviewTableProps = {
   data: CargoClearanceProgressTypes.DetailedQueryResult;
 };
 
-// eslint-disable-next-line no-unused-vars
-export function TrackingDetailOverviewTable(props: TrackingDetailOverviewTableProps) {
+export const TrackingDetailOverviewTable: React.FunctionComponent<TrackingDetailOverviewTableProps> = (props) => {
   const { data } = props;
 
   return (
@@ -26,7 +24,6 @@ export function TrackingDetailOverviewTable(props: TrackingDetailOverviewTablePr
           </tr>
           <tr>
             <th>Master B/L - House B/L</th>
-            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
             <td>{data.masterBL} - {data.houseBL}</td>
             <th>화물구분</th>
             <td>{data.cargo.type}</td>
@@ -51,13 +48,10 @@ export function TrackingDetailOverviewTable(props: TrackingDetailOverviewTablePr
           </tr>
           <tr>
             <th>포장개수</th>
-            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
             <td>{data.package.value} {data.package.unit}</td>
             <th>총 중량</th>
-            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
             <td>{data.weight.value} {data.weight.unit}</td>
             <th>양륙항</th>
-            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
             <td>{data.arrival.port.code}:{data.arrival.port.name}</td>
             <th>입항세관</th>
             <td>{data.arrival.customs}</td>
@@ -92,4 +86,4 @@ export function TrackingDetailOverviewTable(props: TrackingDetailOverviewTablePr
       </table>
     </div>
   );
-}
+};

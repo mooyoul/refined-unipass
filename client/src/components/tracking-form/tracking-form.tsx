@@ -1,4 +1,3 @@
-/* eslint-disable */
 import * as React from 'react';
 
 import { TabPanel, useTabState } from "../tab-panel";
@@ -13,17 +12,17 @@ export const enum TrackingInputType {
 }
 
 export type AutomaticTrackingInput = {
-  type: TrackingInputType.Automatic,
+  type: TrackingInputType.Automatic;
   value: string;
-}
+};
 
 export type ReferenceTrackingInput = {
-  type: TrackingInputType.Reference,
+  type: TrackingInputType.Reference;
   value: string;
-}
+};
 
 export type BLTrackingInput = {
-  type: TrackingInputType.BL,
+  type: TrackingInputType.BL;
   value: TrackingFormPanelBillOfLandingInput;
 };
 
@@ -57,8 +56,9 @@ export const TrackingFormTab: React.FunctionComponent<TrackingFormTabProps> = (p
 export type TrackingFormProps = {
   disabled?: boolean;
   onSubmit(value: TrackingInput): void;
-}
-export function TrackingForm(props: TrackingFormProps) {
+};
+
+export const TrackingForm: React.FunctionComponent<TrackingFormProps> = (props) => {
   const { disabled, onSubmit } = props;
 
   const onAutomaticSubmit = (value: string) => onSubmit({
@@ -100,4 +100,4 @@ export function TrackingForm(props: TrackingFormProps) {
       </TabPanel>
     </div>
   );
-}
+};

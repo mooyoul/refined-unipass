@@ -1,9 +1,14 @@
 {
-  "extends": ["airbnb", "plugin:import/typescript"],
   "env": {
     "browser": true
   },
   "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "react-app"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
         "jsx": true
@@ -11,7 +16,6 @@
   },
   "rules": {
     "import/prefer-default-export": 0,
-    "import/extensions": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
+    "react/prop-types": 0
   }
 }

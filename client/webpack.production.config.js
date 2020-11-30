@@ -82,9 +82,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true,
         parallel: true,
-        sourceMap: true,
       }),
     ],
   },
@@ -99,7 +97,6 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.ejs',

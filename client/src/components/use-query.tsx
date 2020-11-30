@@ -1,10 +1,9 @@
-// eslint-disable-next-line no-unused-vars
 import axios, { AxiosError } from 'axios';
 import * as React from 'react';
-// eslint-disable-next-line no-unused-vars
 import { TrackingInput, TrackingInputType } from './tracking-form';
 
 export type QueryData = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   observable: boolean;
 };
@@ -19,14 +18,11 @@ export type QueryResult = {
   error: null | QueryError;
 };
 
-type QueryParameter = {
-  [key: string]: any;
-};
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isAxiosError = (e: any): e is AxiosError => e.isAxiosError;
 
 const normalizeReference = (input: string) => input.toUpperCase().replace(/[-_\s]/g, '').trim();
-async function query(params: QueryParameter) {
+async function query(params: Record<string, unknown>) {
   try {
     const res = await axios({
       method: 'GET',
@@ -117,7 +113,11 @@ async function billOfLandingQuery(input: {
   });
 }
 
-export function useQuery(input: TrackingInput | null) {
+export function useQuery(input: TrackingInput | null): {
+  isLoading: boolean;
+  data: QueryData | null;
+  error: QueryError | null;
+} {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [data, setData] = React.useState<null | QueryData>(null);
   const [error, setError] = React.useState<null | QueryError>(null);

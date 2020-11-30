@@ -4,7 +4,7 @@ export type CalloutProps = React.PropsWithChildren<{
   modifier: 'is-warning' | 'is-danger';
 }>;
 
-export function Callout(props: CalloutProps) {
+export const Callout: React.FunctionComponent<CalloutProps> = (props) => {
   const { children, modifier } = props;
 
   return (
@@ -14,4 +14,4 @@ export function Callout(props: CalloutProps) {
       </p>
     </div>
   );
-}
+};

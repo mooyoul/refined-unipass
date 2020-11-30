@@ -23,7 +23,7 @@ export type TrackingFormPanelBillOfLandingProps = {
   onSubmit(value: TrackingFormPanelBillOfLandingInput): void;
 };
 
-export function TrackingFormPanelBillOfLanding(props: TrackingFormPanelBillOfLandingProps) {
+export const TrackingFormPanelBillOfLanding: React.FunctionComponent<TrackingFormPanelBillOfLandingProps> = (props) => {
   const { disabled, onSubmit } = props;
   const [masterBL, onMasterBLChange] = useTextInput();
   const [houseBL, onHouseBLChange] = useTextInput();
@@ -46,28 +46,24 @@ export function TrackingFormPanelBillOfLanding(props: TrackingFormPanelBillOfLan
       <form onSubmit={onFormSubmit}>
         <fieldset disabled={disabled}>
           <div className="field">
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="master_bl">Master B/L</label>
             <div className="control">
               <input className="input" type="text" name="master_bl" placeholder="1234567890" value={masterBL} onChange={onMasterBLChange} />
             </div>
           </div>
           <div className="field">
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="house_bl">House B/L</label>
             <div className="control">
               <input className="input" type="text" name="house_bl" placeholder="1234567890" value={houseBL} onChange={onHouseBLChange} />
             </div>
           </div>
           <div className="field">
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="year">입항년도</label>
             <div className="control">
               <div className="select is-fullwidth">
                 <select name="year" onChange={onYearChange} value={year}>
                   { years.map((value) => (
                     <option key={value} value={value}>
-                      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
                       {value}년
                     </option>
                   ))}
@@ -82,4 +78,4 @@ export function TrackingFormPanelBillOfLanding(props: TrackingFormPanelBillOfLan
       </form>
     </TrackingFormPanel>
   );
-}
+};

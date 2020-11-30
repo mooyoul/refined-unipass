@@ -5,7 +5,6 @@ import './index.sass';
 
 import { Callout } from './components/callout';
 import { TrackingDetail } from './components/tracking-detail';
-// eslint-disable-next-line no-unused-vars
 import { TrackingForm, TrackingInput } from './components/tracking-form';
 import { TrackingList } from './components/tracking-list';
 import { useQuery } from './components/use-query';
@@ -15,6 +14,9 @@ function App() {
   const { isLoading, data, error } = useQuery(input);
   const onSubmit = (value: TrackingInput) => {
     setInput(value);
+    gtag("event", "enquiry", {
+      event_category: value.type,
+    });
   };
 
   return (

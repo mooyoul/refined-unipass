@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import * as React from 'react';
 
-// eslint-disable-next-line no-unused-vars,import/no-extraneous-dependencies
 import { CargoClearanceProgressTypes } from 'unipass';
 import {
   groupBy,
@@ -21,8 +19,7 @@ export type TrackingDetailEventsTimelineProps = {
   data: CargoClearanceProgressTypes.DetailedQueryResult;
 };
 
-// eslint-disable-next-line no-unused-vars
-export function TrackingDetailEventsTimeline(props: TrackingDetailEventsTimelineProps) {
+export const TrackingDetailEventsTimeline: React.FunctionComponent<TrackingDetailEventsTimelineProps> = (props) => {
   const { data } = props;
 
   const feed = groupEventsDateTime('YYYY-MM-DD')(data.events)
@@ -68,4 +65,4 @@ export function TrackingDetailEventsTimeline(props: TrackingDetailEventsTimeline
       )) }
     </div>
   );
-}
+};

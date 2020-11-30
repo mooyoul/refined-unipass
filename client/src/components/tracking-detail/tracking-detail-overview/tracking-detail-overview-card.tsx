@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import * as React from 'react';
-
-// eslint-disable-next-line no-unused-vars,import/no-extraneous-dependencies
 import { CargoClearanceProgressTypes } from 'unipass';
 import { format as formatDate } from '../../../util/date';
 
@@ -9,8 +6,7 @@ export type TrackingDetailOverviewCardProps = {
   data: CargoClearanceProgressTypes.DetailedQueryResult;
 };
 
-// eslint-disable-next-line no-unused-vars
-export function TrackingDetailOverviewCard(props: TrackingDetailOverviewCardProps) {
+export const TrackingDetailOverviewCard: React.FunctionComponent<TrackingDetailOverviewCardProps> = (props) => {
   const { data } = props;
 
   return (
@@ -25,4 +21,4 @@ export function TrackingDetailOverviewCard(props: TrackingDetailOverviewCardProp
       </p>
     </div>
   );
-}
+};

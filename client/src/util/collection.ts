@@ -1,6 +1,6 @@
 export function groupBy<T, K = string>(
   iterator: (item: T) => K,
-): (collection: T[]) => Array<[K, T[]]> {
+): (collection: T[]) => [K, T[]][] {
   return (collection: T[]) => {
     const grouped = collection
       .map((item) => {
@@ -23,7 +23,7 @@ export function groupBy<T, K = string>(
 }
 
 export function sortBy<T>(
-  iterator: (item: T) => any,
+  iterator: (item: T) => number | string,
   descending = false,
 ): (collection: T[]) => T[] {
   return (collection: T[]) => collection.sort((a, b) => {
@@ -40,9 +40,10 @@ export function sortBy<T>(
   });
 }
 
+// eslint-disable-next-line
 export function pipe<T extends any[], R>(
   fn: (...args: T) => R,
-  ...fns: Array<(a: R) => R>
+  ...fns: ((a: R) => R)[]
 ) {
   const piped = fns.reduce(
     (prevFn, nextFn) => (value: R) => nextFn(prevFn(value)),

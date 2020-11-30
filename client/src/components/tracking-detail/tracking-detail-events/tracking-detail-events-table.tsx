@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-// eslint-disable-next-line no-unused-vars,import/no-extraneous-dependencies
 import { CargoClearanceProgressTypes } from 'unipass';
 import { format as formatDate } from '../../../util/date';
 
@@ -8,8 +6,7 @@ export type TrackingDetailEventsTableProps = {
   data: CargoClearanceProgressTypes.DetailedQueryResult;
 };
 
-// eslint-disable-next-line no-unused-vars
-export function TrackingDetailEventsTable(props: TrackingDetailEventsTableProps) {
+export const TrackingDetailEventsTable: React.FunctionComponent<TrackingDetailEventsTableProps> = (props) => {
   const { data } = props;
 
   return (
@@ -54,7 +51,6 @@ export function TrackingDetailEventsTable(props: TrackingDetailEventsTableProps)
                 <td rowSpan={rowSpan}>{rowNumber}</td>
                 <td>{event.summary}</td>
                 <td>{event.shed.code}</td>
-                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
                 <td>{event.package.value} {event.package.unit}</td>
                 <td>{event.carry.date && formatDate(event.carry.date, 'YYYY-MM-DD HH:mm:ss')}</td>
                 <td>{event.declarationId}</td>
@@ -62,7 +58,6 @@ export function TrackingDetailEventsTable(props: TrackingDetailEventsTableProps)
               <tr>
                 <td>{formatDate(event.updatedAt, 'YYYY-MM-DD HH:mm:ss')}</td>
                 <td>{event.shed.name}</td>
-                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
                 <td>{event.weight.value} {event.weight.unit}</td>
                 <td>{event.carry.summary}</td>
                 <td>{event.carry.notes}</td>
@@ -78,4 +73,4 @@ export function TrackingDetailEventsTable(props: TrackingDetailEventsTableProps)
       </table>
     </div>
   );
-}
+};

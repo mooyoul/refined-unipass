@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { usePanelState } from '../../tab-panel';
 
-export type PanelProps = React.PropsWithChildren<{}>;
-
-export function TrackingFormPanel(props: PanelProps) {
+export const TrackingFormPanel: React.FunctionComponent<React.PropsWithChildren<Record<string, unknown>>> = (props) => {
   const { children } = props;
   const { isActive } = usePanelState();
 
@@ -15,4 +13,4 @@ export function TrackingFormPanel(props: PanelProps) {
       {children}
     </div>
   );
-}
+};

@@ -8,7 +8,7 @@ export type TrackingFormPanelReferenceProps = {
   onSubmit(value: string): void;
 };
 
-export function TrackingFormPanelReference(props: TrackingFormPanelReferenceProps) {
+export const TrackingFormPanelReference: React.FunctionComponent<TrackingFormPanelReferenceProps> = (props) => {
   const { disabled, onSubmit } = props;
   const [value, onChange] = useTextInput();
 
@@ -22,7 +22,6 @@ export function TrackingFormPanelReference(props: TrackingFormPanelReferenceProp
       <form onSubmit={onFormSubmit}>
         <fieldset disabled={disabled}>
           <div className="field">
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="ref">화물관리번호</label>
             <div className="control">
               <input className="input" type="text" name="ref" placeholder="1234567890" value={value} onChange={onChange} required />
@@ -36,4 +35,4 @@ export function TrackingFormPanelReference(props: TrackingFormPanelReferenceProp
       </form>
     </TrackingFormPanel>
   );
-}
+};

@@ -1,5 +1,4 @@
 import * as React from 'react';
-// eslint-disable-next-line no-unused-vars,import/no-extraneous-dependencies
 import { CargoClearanceProgressTypes } from 'unipass';
 
 import { TrackingDetailEventsTable, TrackingDetailEventsTimeline } from './tracking-detail-events';
@@ -9,8 +8,7 @@ export type TrackingDetailProps = {
   data: CargoClearanceProgressTypes.DetailedQueryResult;
 };
 
-// eslint-disable-next-line no-unused-vars
-export function TrackingDetail(props: TrackingDetailProps) {
+export const TrackingDetail: React.FunctionComponent<TrackingDetailProps> = (props) => {
   const { data } = props;
 
   const [detailedViewEnabled, enableDetailedView] = React.useState(false);
@@ -42,12 +40,10 @@ export function TrackingDetail(props: TrackingDetailProps) {
       <div className="container is-narrow is-padded">
         <div className="buttons is-right">
           <button type="button" className={detailedOverviewButtonClassNames.enable} onClick={onDisableDetailedOverviewClicked}>
-            {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
             <span className="icon">🔖</span>
             <span>간략히</span>
           </button>
           <button type="button" className={detailedOverviewButtonClassNames.disable} onClick={onEnableDetailedOverviewClicked}>
-            {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
             <span className="icon">📚</span>
             <span>자세히</span>
           </button>
@@ -69,4 +65,4 @@ export function TrackingDetail(props: TrackingDetailProps) {
       ) }
     </section>
   );
-}
+};
