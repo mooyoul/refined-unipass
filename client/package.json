@@ -63,7 +63,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "axios": "0.21.0",
+    "axios": "0.21.1",
     "bulma": "0.9.1",
     "core-js": "3.8.1",
     "dayjs": "1.9.7",
