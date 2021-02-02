@@ -1,18 +1,29 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import './index.sass';
-
 import { Callout } from './components/callout';
+import { useLocation } from "./components/location";
 import { TrackingDetail } from './components/tracking-detail';
 import { TrackingForm, TrackingInput } from './components/tracking-form';
 import { TrackingList } from './components/tracking-list';
 import { useQuery } from './components/use-query';
 
+import './index.sass';
+
 function App() {
+  const { shouldBait, referrer } = useLocation();
+  const [trapped, setTrapped] = React.useState<boolean>(false);
   const [input, setInput] = React.useState<TrackingInput | null>(null);
   const { isLoading, data, error } = useQuery(input);
   const onSubmit = (value: TrackingInput) => {
+    if (shouldBait && !trapped) {
+      setTrapped(true);
+      window.open("https://www.catchfashion.com/", "_blank");
+      gtag("event", "bait", {
+        event_category: referrer,
+      });
+    }
+
     setInput(value);
     gtag("event", "enquiry", {
       event_category: value.type,
