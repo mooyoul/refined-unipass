@@ -43,6 +43,29 @@ function App() {
               조회하실 화물관리번호 혹은 운송장번호를 입력하세요.
             </h2>
           </div>
+          <div className="container is-narrow mt-6">
+            <a className="card is-block is-sponsored" href="https://www.catchfashion.com/about/catch" target="_blank">
+              <div className="card-content">
+                <p className="mb-2 has-text-grey">
+                  <span className="tag is-light">Sponsored</span>
+                </p>
+                <div className="media">
+                  <div className="media-left">
+                    <figure className="image is-48x48">
+                      <img src="https://www.catchfashion.com/favicon.png" alt="CATCH" />
+                    </figure>
+                  </div>
+                  <div className="media-content">
+                    <p className="title is-6 has-text-weight-medium has-text-dark mb-2">캐치패션 - 세상 쉬운 명품 직구</p>
+                    <p className="subtitle is-6 has-text-grey mt-2">
+                      전세계 13000여개 명품 브랜드, 240만개 이상의 럭셔리 상품의 실시간 가격을 비교하고 한국어 결제까지 한 번에!
+                    </p>
+                    <p className="has-text-grey-dark has-text-underline">자세히 알아보기</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
