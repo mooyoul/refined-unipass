@@ -79,6 +79,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.GOOGLE_ANALYTICS_ID': JSON.stringify("UA-83917556-2"),
       'process.env.API_BASE_URL': JSON.stringify('https://refined-unipass.debug.so/api'),
     }),
     new MiniCssExtractPlugin({

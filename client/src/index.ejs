@@ -10,17 +10,15 @@
   <meta property="og:title" content="Refined Unipass">
   <meta property="og:description" content="간략화된 관세청 화물통관조회 서비스">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-  <% if (process.env.NODE_ENV === "production") { %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-83917556-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= process.env.GOOGLE_ANALYTICS_ID %>"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-83917556-1');
+    gtag('config', '<%= process.env.GOOGLE_ANALYTICS_ID %>');
   </script>
-  <% } %>
 </head>
 <body>
 <div id="app"></div>
