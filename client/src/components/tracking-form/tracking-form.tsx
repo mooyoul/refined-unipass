@@ -55,11 +55,12 @@ export const TrackingFormTab: React.FunctionComponent<TrackingFormTabProps> = (p
 
 export type TrackingFormProps = {
   disabled?: boolean;
+  input?: TrackingInput | null;
   onSubmit(value: TrackingInput): void;
 };
 
 export const TrackingForm: React.FunctionComponent<TrackingFormProps> = (props) => {
-  const { disabled, onSubmit } = props;
+  const { disabled, input, onSubmit } = props;
 
   const onAutomaticSubmit = (value: string) => onSubmit({
     type: TrackingInputType.Automatic,
@@ -93,7 +94,11 @@ export const TrackingForm: React.FunctionComponent<TrackingFormProps> = (props) 
             </ul>
           </div>
 
-          <TrackingFormPanelAutomatic disabled={disabled} onSubmit={onAutomaticSubmit} />
+          <TrackingFormPanelAutomatic
+            value={input?.type === TrackingInputType.Automatic ? input.value : undefined}
+            disabled={disabled}
+            onSubmit={onAutomaticSubmit}
+          />
           <TrackingFormPanelReference disabled={disabled} onSubmit={onReferenceSubmit} />
           <TrackingFormPanelBillOfLanding disabled={disabled} onSubmit={onBillOfLandingSubmit} />
         </div>

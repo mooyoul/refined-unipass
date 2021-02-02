@@ -5,12 +5,13 @@ import { TrackingFormPanel } from './base';
 
 export type TrackingFormPanelAutomaticProps = {
   disabled?: boolean;
+  value?: string;
   onSubmit(value: string): void;
 };
 
 export const TrackingFormPanelAutomatic: React.FunctionComponent<TrackingFormPanelAutomaticProps> = (props) => {
   const { disabled, onSubmit } = props;
-  const [value, onChange] = useTextInput();
+  const [value, onChange] = useTextInput(props.value);
 
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

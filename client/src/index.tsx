@@ -4,16 +4,21 @@ import * as ReactDOM from 'react-dom';
 import { Callout } from './components/callout';
 import { useLocation } from "./components/location";
 import { TrackingDetail } from './components/tracking-detail';
-import { TrackingForm, TrackingInput } from './components/tracking-form';
+import { TrackingForm, TrackingInput, TrackingInputType } from './components/tracking-form';
 import { TrackingList } from './components/tracking-list';
 import { useQuery } from './components/use-query';
 
 import './index.sass';
 
 function App() {
-  const { shouldBait, referrer } = useLocation();
+  // @todo use Router
+  const { query, shouldBait, referrer } = useLocation();
   const [trapped, setTrapped] = React.useState<boolean>(false);
-  const [input, setInput] = React.useState<TrackingInput | null>(null);
+  const [input, setInput] = React.useState<TrackingInput | null>(
+    query
+      ? { type: TrackingInputType.Automatic, value: query }
+      : null,
+  );
   const { isLoading, data, error } = useQuery(input);
   const onSubmit = (value: TrackingInput) => {
     if (shouldBait && !trapped) {
@@ -29,6 +34,12 @@ function App() {
       event_category: value.type,
     });
   };
+
+  React.useEffect(() => {
+    if (query) {
+      gtag("event", "read-query");
+    }
+  }, [query]);
 
   return (
     <>
@@ -69,7 +80,7 @@ function App() {
         </div>
       </section>
 
-      <TrackingForm disabled={isLoading} onSubmit={onSubmit} />
+      <TrackingForm input={input} disabled={isLoading} onSubmit={onSubmit} />
 
       { error && (
         <Callout modifier="is-danger">
