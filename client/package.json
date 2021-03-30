@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/mooyoul/node-unipass#readme",
   "devDependencies": {
-    "@babel/core": "7.13.13",
+    "@babel/core": "7.13.14",
     "@babel/plugin-transform-runtime": "7.13.10",
     "@babel/preset-env": "7.13.12",
     "@babel/preset-react": "7.13.13",
