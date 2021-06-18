@@ -31,7 +31,7 @@
     "serverless": "2.46.0",
     "serverless-prune-plugin": "1.5.0",
     "tslint": "6.1.3",
-    "typescript": "4.3.2"
+    "typescript": "4.3.4"
   },
   "dependencies": {
     "@serverless-seoul/corgi": "^4.1.3",
