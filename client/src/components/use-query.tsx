@@ -1,4 +1,9 @@
-import axios, { AxiosError } from 'axios';
+// Polyfill for ky
+import 'core-js/features/iterator';
+import 'core-js/features/symbol';
+import 'whatwg-fetch';
+
+import ky, { HTTPError, TimeoutError } from 'ky';
 import * as React from 'react';
 import { TrackingInput, TrackingInputType } from './tracking-form';
 
@@ -18,19 +23,17 @@ export type QueryResult = {
   error: null | QueryError;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isAxiosError = (e: any): e is AxiosError => e.isAxiosError;
+const client = ky.extend({
+  prefixUrl: (process.env.API_BASE_URL ?? "").replace(/\/+$/, ""),
+});
 
 const normalizeReference = (input: string) => input.toUpperCase().replace(/[-_\s]/g, '').trim();
-async function query(params: Record<string, unknown>) {
-  try {
-    const res = await axios({
-      method: 'GET',
-      url: `${process.env.API_BASE_URL}/cargo-clearance-progress`,
-      params,
-    });
 
-    const { data } = res.data;
+async function query(params: Record<string, string | number>) {
+  try {
+    const { data } = await client.get("cargo-clearance-progress", {
+      searchParams: params,
+    }).json();
 
     return {
       data: {
@@ -46,7 +49,9 @@ async function query(params: Record<string, unknown>) {
         observable: false,
       },
       error: e.response?.data?.error ?? {
-        code: isAxiosError(e) ? 'NETWORK_ERROR' : 'UNKNOWN_ERROR',
+        code: e instanceof HTTPError || e instanceof TimeoutError
+          ? 'NETWORK_ERROR'
+          : 'UNKNOWN_ERROR',
         message: e.message,
       },
     };

@@ -17,6 +17,7 @@ module.exports = {
     publicPath: '/refined-unipass/',
     filename: 'bundle.js',
   },
+  target: ['web', 'es5'],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
@@ -27,6 +28,31 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'eslint-loader',
+      },
+      // Transpile rule for ES6 required modules
+      {
+        test: /\.js$/,
+        include: [
+          "ky"
+        ].map((pkg) => path.join(__dirname, "node_modules", pkg)),
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                targets: '> 0.5%, last 2 versions, Firefox ESR, not dead, ie 11',
+                useBuiltIns: 'usage',
+                corejs: 3,
+                shippedProposals: true,
+              }],
+            ],
+            plugins: [
+              ['@babel/plugin-transform-runtime', {
+                corejs: 3,
+              }],
+            ],
+          },
+        }],
       },
       {
         test: /\.tsx?$/,
@@ -39,6 +65,7 @@ module.exports = {
                 targets: '> 0.5%, last 2 versions, Firefox ESR, not dead, ie 11',
                 useBuiltIns: 'usage',
                 corejs: 3,
+                shippedProposals: true,
               }],
               '@babel/preset-react',
             ],

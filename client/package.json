@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "dev": "npm run prebuild && webpack serve --hot",
+    "dev:prod": "npm run prebuild && webpack serve --hot --config webpack.production.config.js",
     "prebuild": "check-engine && npm run clean",
     "build": "webpack",
     "build:prod": "npm run build -- --config webpack.production.config.js"
@@ -63,12 +64,13 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "axios": "0.21.1",
     "bulma": "0.9.3",
     "core-js": "3.15.2",
     "dayjs": "1.10.6",
+    "ky": "^0.28.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "use-constant": "1.1.0"
+    "use-constant": "1.1.0",
+    "whatwg-fetch": "^3.6.2"
   }
 }
