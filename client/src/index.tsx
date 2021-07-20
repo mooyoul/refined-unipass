@@ -23,7 +23,7 @@ function App() {
   const onSubmit = (value: TrackingInput) => {
     if (shouldBait && !trapped) {
       setTrapped(true);
-      window.open("https://www.catchfashion.com/", "_blank");
+      globalThis.open("https://www.catchfashion.com/", "_blank");
       gtag("event", "bait", {
         event_category: referrer,
       });

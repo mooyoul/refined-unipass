@@ -12,7 +12,7 @@ export const useLocation = (): Location => {
   return React.useMemo(() => {
     const url = (() => {
       try {
-        return new URL(window.location.href);
+        return new URL(globalThis.location.href);
       } catch (e) {
         // unsupported browser
         return null;
