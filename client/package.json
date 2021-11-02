@@ -50,7 +50,7 @@
     "eslint-plugin-react": "7.26.1",
     "eslint-plugin-react-hooks": "4.2.0",
     "html-webpack-plugin": "5.5.0",
-    "mini-css-extract-plugin": "2.2.2",
+    "mini-css-extract-plugin": "2.4.3",
     "node-sass": "6.0.1",
     "sass-loader": "12.1.0",
     "style-loader": "3.2.1",
