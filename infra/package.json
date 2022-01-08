@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "description": "Additional IaC code for refined-unipass",
   "dependencies": {
-    "@aws-cdk/aws-cloudfront": "1.137.0",
-    "@aws-cdk/core": "1.137.0"
+    "@aws-cdk/aws-cloudfront": "1.138.1",
+    "@aws-cdk/core": "1.138.1"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "2.3.0",
-    "@aws-cdk/aws-certificatemanager": "1.137.0",
-    "@aws-cdk/aws-iam": "1.137.0",
-    "@aws-cdk/aws-route53": "1.137.0",
-    "@aws-cdk/aws-route53-targets": "1.137.0",
+    "@aws-cdk/assert": "2.4.0",
+    "@aws-cdk/aws-certificatemanager": "1.138.1",
+    "@aws-cdk/aws-iam": "1.138.1",
+    "@aws-cdk/aws-route53": "1.138.1",
+    "@aws-cdk/aws-route53-targets": "1.138.1",
     "@prescott/tslint-preset": "1.0.1",
     "@types/jest": "27.4.0",
     "@types/node": "12.20.41",
-    "aws-cdk": "2.3.0",
+    "aws-cdk": "2.4.0",
     "jest": "27.4.7",
     "ts-jest": "27.1.2",
     "ts-node": "10.4.0",
