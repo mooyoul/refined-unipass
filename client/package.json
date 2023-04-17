@@ -49,7 +49,7 @@
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.6.0",
-    "html-webpack-plugin": "5.5.0",
+    "html-webpack-plugin": "5.5.1",
     "mini-css-extract-plugin": "2.4.6",
     "node-sass": "7.0.3",
     "sass-loader": "12.4.0",
