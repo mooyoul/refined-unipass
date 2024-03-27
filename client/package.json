@@ -32,8 +32,8 @@
     "@babel/runtime": "7.23.6",
     "@babel/runtime-corejs3": "7.23.6",
     "@types/gtag.js": "0.0.18",
-    "@types/react": "17.0.73",
-    "@types/react-dom": "17.0.25",
+    "@types/react": "18.2.73",
+    "@types/react-dom": "18.2.22",
     "@typescript-eslint/eslint-plugin": "6.14.0",
     "@typescript-eslint/parser": "6.14.0",
     "@babel/eslint-parser": "7.23.3",
@@ -68,8 +68,8 @@
     "core-js": "3.34.0",
     "dayjs": "1.11.10",
     "ky": "0.28.6",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "use-constant": "1.1.1",
     "whatwg-fetch": "3.6.20"
   }
