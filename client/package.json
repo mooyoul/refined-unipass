@@ -54,7 +54,7 @@
     "node-sass": "9.0.0",
     "sass-loader": "14.2.1",
     "style-loader": "4.0.0",
-    "terser-webpack-plugin": "5.3.10",
+    "terser-webpack-plugin": "5.3.14",
     "ts-loader": "9.5.1",
     "typescript": "4.4.4",
     "unipass": "1.0.3",
